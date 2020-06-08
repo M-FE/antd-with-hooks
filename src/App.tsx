@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
 
 const App: FC = () => {
-	return <div>Ant Design Hooks</div>;
+	return (
+		<>
+			<h1>Ant Design Hooks</h1>
+			<h2>Ant</h2>
+			<hr />
+		</>
+	);
 };
 
 export default App;
