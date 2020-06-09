@@ -1,2 +1,14 @@
+/* 变量定义 */
 @import './variable';
+
+/* mixin */
+@import './mixins';
+
+/* function */
+@import './functions';
+
+/* 样式初始化 */
 @import './normalize';
+
+/* Button */
+@import '../components/Button/style';

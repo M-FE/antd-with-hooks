@@ -1,5 +1,5 @@
 # Ant Design & Hooks
-> UI library for ant design by hooks.
+> React UI library for ant design by hooks.
 
 ## Available Scripts
 
