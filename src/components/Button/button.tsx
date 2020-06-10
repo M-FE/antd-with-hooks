@@ -30,12 +30,13 @@ type IBaseButtonProps = {
 	danger: boolean;
 	block: boolean;
 	href: string;
+	className: string;
 	children: ReactNode;
 };
 
 type IButtonProps = Partial<{
     htmlType: ButtonTypes;
-} & IBaseButtonProps> & Omit<ButtonHTMLAttributes<any>, 'type'>;
+} & IBaseButtonProps> & Omit<ButtonHTMLAttributes<any>, 'type' | 'className'>;
 
 type IAncharProps = Partial<IBaseButtonProps> & Omit<AnchorHTMLAttributes<any>, 'href'>;
 
@@ -49,24 +50,25 @@ const Button: FC<IProps> = props => {
 		danger,
 		block,
 		href,
-        children,
+		children,
+		className,
         ...nativeProps
     } = props;
     
     const prefix = prefixCls('btn');
-    const className = classNames(prefix, {
+    const classes = classNames(prefix, className, {
         [`${prefix}-${type}`]: type,
         [`${prefix}-${size}`]: size,
-        [`${prefix}-danger`]: danger && !type,
-        [`${prefix}-ghost`]: ghost && !type,
+        [`${prefix}-danger`]: danger,
+        [`${prefix}-ghost`]: ghost,
         [`${prefix}-block`]: block,
     });
 
     if (type === Types.LINK && href !== undefined) {
-        return <a className={className} href={href} {...nativeProps}>{children}</a>
+        return <a className={classes} href={href} {...nativeProps}>{children}</a>
     }
 
-	return <button className={className} {...nativeProps}>{children}</button>;
+	return <button className={classes} {...nativeProps}>{children}</button>;
 };
 
 export default Button;

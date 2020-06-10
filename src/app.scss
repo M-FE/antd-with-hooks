@@ -1,0 +1,11 @@
+@for $i from 1 through 20 {
+    .mt-#{$i} { margin-top: $i * 8px }
+    .mb-#{$i} { margin-bottom: $i * 8px }
+    .mr-#{$i} { margin-right: $i * 8px }
+    .ml-#{$i} { margin-left: $i * 8px }
+
+    .pt-#{$i} { padding-top: $i * 8px }
+    .pb-#{$i} { padding-bottom: $i * 8px }
+    .pr-#{$i} { padding-right: $i * 8px }
+    .pl-#{$i} { padding-left: $i * 8px }
+}

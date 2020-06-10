@@ -1,0 +1,20 @@
+@mixin buttonType(
+	$color,
+	$bg,
+	$border-color: $bg,
+	$color-hover: $color,
+	$bg-hover: lighten($bg, 8%),
+	$border-color-hover: $bg-hover
+) {
+	color: $color;
+	background-color: $bg;
+	border: 1px solid $border-color;
+
+	&:hover,
+	&:focus {
+		outline: 0;
+		color: $color-hover;
+		background-color: $bg-hover;
+		border-color: $border-color-hover;
+	}
+}

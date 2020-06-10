@@ -1,4 +1,52 @@
 .ant-btn {
-    display: inline-block;
-    outline: 0;
+	display: inline-block;
+	outline: 0;
+	border: 1px solid $btn-border-color;
+	padding: $btn-padding;
+	font-size: $btn-font-size;
+	line-height: $btn-line-height;
+	color: $btn-color;
+	background-color: $btn-bg;
+	transition: $btn-transition;
+	@include buttonType(
+		$btn-color,
+		$btn-bg,
+		$btn-border-color,
+		$btn-hover-color,
+		$btn-bg,
+		$btn-hover-border-color
+    );
+
+    &[disabled],
+    &.disabled {
+        cursor: not-allowed;
+        @include buttonType($disabled-color, $disabled-bg, $disabled-color, $disabled-color, $disabled-bg, $disabled-color);
+    }
+}
+
+.ant-btn-primary {
+	@include buttonType($btn-primary-color, $btn-primary-bg);
+}
+
+.ant-btn-danger {
+	@include buttonType(
+		$btn-color,
+		$btn-bg,
+		$btn-border-color,
+		$btn-danger-color,
+		$btn-bg,
+		$btn-danger-color
+    );
+    
+    &.ant-btn-primary {
+        @include buttonType($white, $btn-danger-color);
+    }
+}
+
+.ant-btn-dashed {
+    border-style: dashed;
+}
+
+.ant-btn-link {
+    border: 0;
 }

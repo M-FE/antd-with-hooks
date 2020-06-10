@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
 import Button, { Types, Sizes } from './components/Button';
+import './app.scss';
+import './styles/index.scss';
 
 const App: FC = () => {
 	return (
-		<>
+		<div className="mt-2 mr-2 mb-2 ml-2">
 			<h1>Ant Design Hooks</h1>
 			<h2>Ant</h2>
 			<hr />
 			<Button>Default</Button>
-			<Button danger type={Types.PRIMARY}>Primary Btn</Button>
-			<Button danger size={Sizes.LARGE}>Danger Large Btn</Button>
-			<Button disabled>Disabled Btn</Button>
-			<Button disabled href="" type={Types.LINK}>Disabled Link</Button>
-		</>
+			<Button className="ml-1" type={Types.PRIMARY}>Primary Btn</Button>
+			<Button className="ml-1" danger type={Types.PRIMARY}>Primary Btn</Button>
+			<Button className="ml-1" type={Types.DASHED}>Primary Btn</Button>
+			<Button className="ml-1" danger size={Sizes.LARGE}>Danger Large Btn</Button>
+			<Button className="ml-1" disabled>Disabled Btn</Button>
+			<Button className="ml-1" href="" type={Types.LINK}>Link</Button>
+			<Button className="ml-1" disabled href="" type={Types.LINK}>Disabled Link</Button>
+		</div>
 	);
 };
 

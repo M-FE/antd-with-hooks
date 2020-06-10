@@ -10,7 +10,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black   : #000 !default;
 
-$blue  : #0d6efd !default;
+$blue  : #1890FF !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink  : #d63384 !default;
@@ -74,6 +74,10 @@ $h3-font-size: $font-size-base * 1.75 !default;
 $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
+
+// disabled
+$disabled-color: $gray-400 !default;
+$disabled-bg: $gray-100 !default;
 
 // 链接
 $link-color           : $primary !default;
@@ -176,9 +180,27 @@ $box-shadow      : 0 0.5rem 1rem rgba($black, 0.15) !default;
 $box-shadow-lg   : 0 1rem 3rem rgba($black, 0.175) !default;
 $box-shadow-inset: inset 0 1px 2px rgba($black, 0.075) !default;
 
-// Button
+// transition delay
+$transition-delay: .3s !default;
+$transition-delay-sm: .1s !default;
+$transition-delay-lg: .5s !default;
+
+/*
+ * Button组件
+ */
+$btn-transition: all $transition-delay !default;
 $btn-font-size: $font-size-base !default;
 $btn-line-height: $line-height-base !default;
 $btn-border-color: $border-color !default;
 $btn-shadow: $box-shadow !default;
 $btn-bg: $white !default;
+$btn-color: $body-color !default;
+$btn-padding: .2rem 1rem !default;
+$btn-hover-color: $primary !default;
+$btn-hover-border-color: $primary !default;
+
+// 类型
+$btn-primary-color: $white !default;
+$btn-primary-bg: $primary !default;
+
+$btn-danger-color: $danger !default;
