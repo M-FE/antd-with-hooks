@@ -2,13 +2,11 @@
 	position: relative;
 	display: inline-block;
 	outline: 0;
-	border: 1px solid $btn-border-color;
-	padding: $btn-padding;
-	font-size: $btn-font-size;
-	line-height: $btn-line-height;
-	color: $btn-color;
-	background-color: $btn-bg;
 	transition: $btn-transition;
+	box-shadow: $btn-shadow;
+	border-radius: $btn-radius;
+
+	@include buttonSize($btn-font-size, $btn-line-height, $btn-padding-v, $btn-padding-h);
 	@include buttonType(
 		$btn-color,
 		$btn-bg,
@@ -55,6 +53,7 @@
 .ant-btn-link {
 	@include buttonType($btn-link-color, transparent);
 	border-color: transparent;
+	box-shadow: none;
 
 	&:hover {
 		text-decoration: none;
@@ -71,4 +70,17 @@
 			background-color: transparent;
 		}
     }
+}
+
+.ant-btn-block {
+	display: block;
+	width: 100%;
+}
+
+.ant-btn-large {
+	@include buttonSize($btn-lg-font-size, $btn-lg-line-height, $btn-lg-padding-v, $btn-lg-padding-h);
+}
+
+.ant-btn-small {
+	@include buttonSize($btn-sm-font-size, $btn-sm-line-height, $btn-sm-padding-v, $btn-sm-padding-h);
 }

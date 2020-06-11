@@ -30,6 +30,11 @@ export enum ButtonTypes {
 	BUTTON = 'button'
 }
 
+export enum Shapes {
+	CIRCLE = 'circle',
+	ROUND = 'round'
+}
+
 type IBaseButtonProps = {
 	type: Types;
 	size: Sizes;
@@ -39,6 +44,7 @@ type IBaseButtonProps = {
 	href: string;
 	className: string;
 	disabled: boolean;
+	shape: Shapes;
 	onClick: MouseEventHandler<HTMLElement>;
 	children: ReactNode;
 };
@@ -67,6 +73,7 @@ const Button: FC<IProps> = props => {
 		href,
 		children,
 		className,
+		shape,
 		htmlType,
 		disabled,
 		onClick,
@@ -77,6 +84,7 @@ const Button: FC<IProps> = props => {
 	const classes = classNames(prefix, className, {
 		[`${prefix}-${type}`]: type,
 		[`${prefix}-${size}`]: size,
+		[`${prefix}-${shape}`]: shape,
 		[`${prefix}-danger`]: danger,
 		[`${prefix}-ghost`]: ghost,
 		[`${prefix}-block`]: block,
