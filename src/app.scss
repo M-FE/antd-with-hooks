@@ -1,3 +1,7 @@
+body {
+    background-color: #f1f3f7;
+}
+
 @for $i from 1 through 20 {
     .mt-#{$i} { margin-top: $i * 8px }
     .mb-#{$i} { margin-bottom: $i * 8px }

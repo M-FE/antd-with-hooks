@@ -2,8 +2,8 @@
 	$color,
 	$bg,
 	$border-color: $bg,
-	$color-hover: $color,
-	$bg-hover: lighten($bg, 8%),
+	$color-hover: lighten($color, 10%),
+	$bg-hover: lighten($bg, 10%),
 	$border-color-hover: $bg-hover
 ) {
 	color: $color;
@@ -16,5 +16,16 @@
 		color: $color-hover;
 		background-color: $bg-hover;
 		border-color: $border-color-hover;
+	}
+}
+
+@mixin buttonGhost($color) {
+	&.ant-btn-ghost {
+		&,
+		&:hover,
+		&:focus {
+			color: $color;
+			background-color: transparent;
+		}
 	}
 }

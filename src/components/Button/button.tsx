@@ -1,4 +1,11 @@
-import React, { FC, ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import React, {
+	FC,
+	ReactNode,
+	AnchorHTMLAttributes,
+	ButtonHTMLAttributes,
+	MouseEventHandler,
+	useCallback
+} from 'react';
 import classNames from 'classnames';
 import { prefixCls } from '../_utils/prefix';
 
@@ -18,9 +25,9 @@ export enum Sizes {
 }
 
 export enum ButtonTypes {
-    SUBMIT = 'submit',
-    RESET = 'reset',
-    BUTTON = 'button',
+	SUBMIT = 'submit',
+	RESET = 'reset',
+	BUTTON = 'button'
 }
 
 type IBaseButtonProps = {
@@ -31,14 +38,22 @@ type IBaseButtonProps = {
 	block: boolean;
 	href: string;
 	className: string;
+	disabled: boolean;
+	onClick: MouseEventHandler<HTMLElement>;
 	children: ReactNode;
 };
 
-type IButtonProps = Partial<{
-    htmlType: ButtonTypes;
-} & IBaseButtonProps> & Omit<ButtonHTMLAttributes<any>, 'type' | 'className'>;
+type OmitNativeProps = 'type' | 'className' | 'onClick' | 'disabled';
 
-type IAncharProps = Partial<IBaseButtonProps> & Omit<AnchorHTMLAttributes<any>, 'href'>;
+type IButtonProps = Partial<
+	{
+		htmlType: ButtonTypes;
+	} & IBaseButtonProps
+> &
+	Omit<ButtonHTMLAttributes<any>, OmitNativeProps>;
+
+type IAncharProps = Partial<IBaseButtonProps> &
+	Omit<AnchorHTMLAttributes<any>, 'href'>;
 
 type IProps = IButtonProps & IAncharProps;
 
@@ -52,23 +67,57 @@ const Button: FC<IProps> = props => {
 		href,
 		children,
 		className,
-        ...nativeProps
-    } = props;
-    
-    const prefix = prefixCls('btn');
-    const classes = classNames(prefix, className, {
-        [`${prefix}-${type}`]: type,
-        [`${prefix}-${size}`]: size,
-        [`${prefix}-danger`]: danger,
-        [`${prefix}-ghost`]: ghost,
-        [`${prefix}-block`]: block,
-    });
+		htmlType,
+		disabled,
+		onClick,
+		...nativeProps
+	} = props;
 
-    if (type === Types.LINK && href !== undefined) {
-        return <a className={classes} href={href} {...nativeProps}>{children}</a>
-    }
+	const prefix = prefixCls('btn');
+	const classes = classNames(prefix, className, {
+		[`${prefix}-${type}`]: type,
+		[`${prefix}-${size}`]: size,
+		[`${prefix}-danger`]: danger,
+		[`${prefix}-ghost`]: ghost,
+		[`${prefix}-block`]: block,
+		'is-disabled': disabled
+	});
 
-	return <button className={classes} {...nativeProps}>{children}</button>;
+	const handleClick = useCallback(
+		(event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+			if (disabled) {
+				event.preventDefault();
+			}
+
+			onClick && onClick(event);
+		},
+		[]
+	);
+
+	if (type === Types.LINK && href !== undefined) {
+		return (
+			<a
+				className={classes}
+				href={href}
+				onClick={handleClick}
+				{...nativeProps}
+			>
+				{children}
+			</a>
+		);
+	}
+
+	return (
+		<button
+			className={classes}
+			disabled={disabled}
+			type={htmlType}
+			onClick={handleClick}
+			{...nativeProps}
+		>
+			{children}
+		</button>
+	);
 };
 
 export default Button;
