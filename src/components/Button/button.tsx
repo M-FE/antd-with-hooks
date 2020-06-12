@@ -4,7 +4,8 @@ import React, {
 	AnchorHTMLAttributes,
 	ButtonHTMLAttributes,
 	MouseEventHandler,
-	useCallback
+	useCallback,
+	useMemo
 } from 'react';
 import classNames from 'classnames';
 import { prefixCls } from '../_utils/prefix';
@@ -81,25 +82,28 @@ const Button: FC<IProps> = props => {
 	} = props;
 
 	const prefix = prefixCls('btn');
-	const classes = classNames(prefix, className, {
-		[`${prefix}-${type}`]: type,
-		[`${prefix}-${size}`]: size,
-		[`${prefix}-${shape}`]: shape,
-		[`${prefix}-danger`]: danger,
-		[`${prefix}-ghost`]: ghost,
-		[`${prefix}-block`]: block,
-		'is-disabled': disabled
-	});
+	const classes = useMemo(() => {
+		return classNames(prefix, className, {
+			[`${prefix}-${type}`]: type,
+			[`${prefix}-${size}`]: size,
+			[`${prefix}-${shape}`]: shape,
+			[`${prefix}-danger`]: danger,
+			[`${prefix}-ghost`]: ghost,
+			[`${prefix}-block`]: block,
+			'is-disabled': disabled
+		})
+	}, [className, type, size, shape, danger, ghost, block, disabled, prefix]);
 
 	const handleClick = useCallback(
 		(event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 			if (disabled) {
 				event.preventDefault();
+				return;
 			}
 
 			onClick && onClick(event);
 		},
-		[]
+		[disabled, onClick]
 	);
 
 	if (type === Types.LINK && href !== undefined) {
@@ -126,6 +130,11 @@ const Button: FC<IProps> = props => {
 			{children}
 		</button>
 	);
+};
+
+Button.defaultProps = {
+	htmlType: ButtonTypes.BUTTON,
+	disabled: false
 };
 
 export default Button;
