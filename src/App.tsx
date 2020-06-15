@@ -3,6 +3,7 @@ import Button, { Types, Sizes, ButtonTypes } from './components/Button';
 import './app.scss';
 import './styles/index.scss';
 import { Shapes } from './components/Button/button';
+import { AiOutlineGithub } from 'react-icons/ai';
 
 const App: FC = () => {
 	return (
@@ -24,6 +25,9 @@ const App: FC = () => {
 			<Button className="ml-1" href="" type={Types.LINK} target="_blank">Link</Button>
 			<Button className="ml-1" disabled href="" type={Types.LINK}>Disabled Link</Button>
 			<Button className="ml-1 mt-1" type={Types.PRIMARY} block>Primary Block Btn</Button>
+			<Button className="ml-1 mt-1" type={Types.PRIMARY} block loading>Primary Block Loading Btn</Button>
+			<Button className="ml-1 mt-1" type={Types.PRIMARY} block icon={<AiOutlineGithub className="123" />}>Primary Block Icon Btn</Button>
+			<hr />
 		</div>
 	);
 };

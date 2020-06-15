@@ -11,11 +11,16 @@
 	border: 1px solid $border-color;
 
 	&:hover,
-	&:focus {
+	&:focus,
+	&.ant-btn-loading {
 		outline: 0;
 		color: $color-hover;
 		background-color: $bg-hover;
 		border-color: $border-color-hover;
+	}
+
+	&.ant-btn-loading {
+		pointer-events: none;
 	}
 }
 

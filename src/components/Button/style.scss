@@ -84,3 +84,24 @@
 .ant-btn-small {
 	@include buttonSize($btn-sm-font-size, $btn-sm-line-height, $btn-sm-padding-v, $btn-sm-padding-h);
 }
+
+.ant-btn-icon {
+	margin-top: -3px;
+	margin-right: $btn-icon-spacing;
+}
+
+@keyframes loadingCircle {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.ant-btn-icon-loading {
+	animation: loadingCircle 1s infinite linear;
+}
+
+.ant-only-icon {
+	.ant-btn-icon {
+		margin-right: 0;
+	}
+}

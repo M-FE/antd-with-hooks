@@ -8,7 +8,8 @@ import React, {
 	useMemo
 } from 'react';
 import classNames from 'classnames';
-import { prefixCls } from '../_utils/prefix';
+import { AiOutlineLoading } from 'react-icons/ai';
+import { cloneElement } from '../_utils/react-node';
 
 export enum Types {
 	DEFAULT = 'default',
@@ -42,6 +43,8 @@ type IBaseButtonProps = {
 	ghost: boolean;
 	danger: boolean;
 	block: boolean;
+	icon: ReactNode;
+	loading: boolean;
 	href: string;
 	className: string;
 	disabled: boolean;
@@ -76,23 +79,40 @@ const Button: FC<IProps> = props => {
 		className,
 		shape,
 		htmlType,
+		loading,
+		icon,
 		disabled,
 		onClick,
 		...nativeProps
 	} = props;
 
-	const prefix = prefixCls('btn');
 	const classes = useMemo(() => {
-		return classNames(prefix, className, {
-			[`${prefix}-${type}`]: type,
-			[`${prefix}-${size}`]: size,
-			[`${prefix}-${shape}`]: shape,
-			[`${prefix}-danger`]: danger,
-			[`${prefix}-ghost`]: ghost,
-			[`${prefix}-block`]: block,
-			'is-disabled': disabled
+		return classNames('ant-btn', className, {
+			[`ant-btn-${type}`]: type,
+			[`ant-btn-${size}`]: size,
+			[`ant-btn-${shape}`]: shape,
+			'ant-btn-danger': danger,
+			'ant-btn-ghost': ghost,
+			'ant-btn-block': block,
+			'ant-btn-only-icon': icon && !children,
+			'is-disabled': disabled,
+			'ant-btn-loading': loading
 		})
-	}, [className, type, size, shape, danger, ghost, block, disabled, prefix]);
+	}, [className, type, size, shape, danger, ghost, block, disabled, icon]);
+
+	const iconNode = useMemo(() => {
+		if (!icon && !loading) {
+			return null;
+		}
+
+		return (
+			<span className="ant-btn-icon">
+				{
+					loading ? <AiOutlineLoading className="ant-btn-icon-loading" /> : icon
+				}
+			</span>
+		);
+	}, [icon, loading]);
 
 	const handleClick = useCallback(
 		(event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -114,6 +134,7 @@ const Button: FC<IProps> = props => {
 				onClick={handleClick}
 				{...nativeProps}
 			>
+				{iconNode}
 				{children}
 			</a>
 		);
@@ -127,6 +148,7 @@ const Button: FC<IProps> = props => {
 			onClick={handleClick}
 			{...nativeProps}
 		>
+			{iconNode}
 			{children}
 		</button>
 	);
