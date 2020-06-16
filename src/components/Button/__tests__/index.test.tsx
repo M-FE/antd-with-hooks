@@ -1,16 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './';
-import { Types, Sizes } from './button';
-import { genSelector } from '../_utils/test';
+import Button from '..';
+import { Types, Sizes } from '../button';
 
 let mockFn: jest.Mock;
 
-beforeEach(() => {
-    mockFn = jest.fn(() => {});
-});
-
 describe('Button', () => {
+    beforeEach(() => {
+        mockFn = jest.fn(() => {});
+    });
+
 	it('Should render a correct default button', () => {
         const wrapper = shallow(<Button />);
         
@@ -49,5 +48,11 @@ describe('Button', () => {
         const wrapper = shallow(<Button loading />);
 
         expect(wrapper.find('button')).toHaveClassName('ant-btn-only-icon ant-btn-loading');
+    });
+
+    it('Button - snapshot', () => {
+        const wrapper = shallow(<Button size={Sizes.LARGE} type={Types.PRIMARY} loading />);
+
+        expect(wrapper.render()).toMatchSnapshot();
     });
 });
