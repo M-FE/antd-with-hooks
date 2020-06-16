@@ -35,16 +35,23 @@
 	}
 }
 
-@mixin buttonSize($font, $lh, $padding-v, $padding-h) {
+@mixin buttonSize($font, $height, $padding-h) {
 	font-size: $font;
-	line-height: $lh;
-	padding: $padding-v $padding-h;
+	height: $height;
+	line-height: $height;
+	padding: 0 $padding-h;
 
 	&.ant-btn-round {
-		border-radius: $lh + $padding-v * 2;
+		border-radius: $height;
 	}
 
 	&.ant-btn-circle {
 		border-radius: 50%;
+	}
+
+	&.ant-btn-only-icon {
+		padding: 0;
+		width: $height;
+		height: $height;
 	}
 }

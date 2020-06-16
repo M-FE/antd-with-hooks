@@ -197,7 +197,7 @@ $btn-border-color: $border-color !default;
 $btn-shadow: $box-shadow-xs !default;
 $btn-bg: $white !default;
 $btn-color: $body-color !default;
-$btn-padding-v: 0.2rem !default;
+$btn-height: 2rem !default;
 $btn-padding-h: 1rem !default;
 $btn-hover-color: $primary !default;
 $btn-hover-border-color: $primary !default;
@@ -212,12 +212,10 @@ $btn-danger-color: $danger !default;
 $btn-link-color: $link-hover-color !default;
 
 // size
-$btn-lg-font-size: $font-size-base !default;
-$btn-lg-line-height: $line-height-lg !default;
-$btn-lg-padding-v: 0.2rem !default;
+$btn-lg-font-size: $font-size-lg !default;
+$btn-lg-height: 2.5rem !default;
 $btn-lg-padding-h: 1rem !default;
 
 $btn-sm-font-size: $font-size-sm !default;
-$btn-sm-line-height: $line-height-sm !default;
-$btn-sm-padding-v: .18rem !default;
+$btn-sm-height: 1.5rem !default;
 $btn-sm-padding-h: .5rem !default;

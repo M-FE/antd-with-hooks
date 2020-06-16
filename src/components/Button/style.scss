@@ -5,8 +5,9 @@
 	transition: $btn-transition;
 	box-shadow: $btn-shadow;
 	border-radius: $btn-radius;
+	box-sizing: border-box;
 
-	@include buttonSize($btn-font-size, $btn-line-height, $btn-padding-v, $btn-padding-h);
+	@include buttonSize($btn-font-size, $btn-height, $btn-padding-h);
 	@include buttonType(
 		$btn-color,
 		$btn-bg,
@@ -78,11 +79,11 @@
 }
 
 .ant-btn-large {
-	@include buttonSize($btn-lg-font-size, $btn-lg-line-height, $btn-lg-padding-v, $btn-lg-padding-h);
+	@include buttonSize($btn-lg-font-size, $btn-lg-height, $btn-lg-padding-h);
 }
 
 .ant-btn-small {
-	@include buttonSize($btn-sm-font-size, $btn-sm-line-height, $btn-sm-padding-v, $btn-sm-padding-h);
+	@include buttonSize($btn-sm-font-size, $btn-sm-height, $btn-sm-padding-h);
 }
 
 .ant-btn-icon {
@@ -100,7 +101,7 @@
 	animation: loadingCircle 1s infinite linear;
 }
 
-.ant-only-icon {
+.ant-btn-only-icon {
 	.ant-btn-icon {
 		margin-right: 0;
 	}

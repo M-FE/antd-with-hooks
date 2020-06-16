@@ -26,7 +26,14 @@ const App: FC = () => {
 			<Button className="ml-1" disabled href="" type={Types.LINK}>Disabled Link</Button>
 			<Button className="ml-1 mt-1" type={Types.PRIMARY} block>Primary Block Btn</Button>
 			<Button className="ml-1 mt-1" type={Types.PRIMARY} block loading>Primary Block Loading Btn</Button>
-			<Button className="ml-1 mt-1" type={Types.PRIMARY} block icon={<AiOutlineGithub className="123" />}>Primary Block Icon Btn</Button>
+			<Button loading />
+			<Button icon={<AiOutlineGithub />} />
+			<Button icon={<AiOutlineGithub />} size={Sizes.LARGE} />
+			<Button icon={<AiOutlineGithub />} size={Sizes.SMALL} />
+			<Button icon={<AiOutlineGithub />} shape={Shapes.CIRCLE} />
+			<Button icon={<AiOutlineGithub />} shape={Shapes.CIRCLE} size={Sizes.LARGE} />
+			<Button icon={<AiOutlineGithub />} shape={Shapes.CIRCLE} size={Sizes.SMALL} />
+			<Button className="ml-1 mt-1" type={Types.PRIMARY} block icon={<AiOutlineGithub className="123" title="444" />}>Primary Block Icon Btn</Button>
 			<hr />
 		</div>
 	);

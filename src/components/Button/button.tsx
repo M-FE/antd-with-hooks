@@ -59,8 +59,7 @@ type IButtonProps = Partial<
 	{
 		htmlType: ButtonTypes;
 	} & IBaseButtonProps
-> &
-	Omit<ButtonHTMLAttributes<any>, OmitNativeProps>;
+> & Omit<ButtonHTMLAttributes<any>, OmitNativeProps>;
 
 type IAncharProps = Partial<IBaseButtonProps> &
 	Omit<AnchorHTMLAttributes<any>, 'href'>;
@@ -94,7 +93,7 @@ const Button: FC<IProps> = props => {
 			'ant-btn-danger': danger,
 			'ant-btn-ghost': ghost,
 			'ant-btn-block': block,
-			'ant-btn-only-icon': icon && !children,
+			'ant-btn-only-icon': !children,
 			'is-disabled': disabled,
 			'ant-btn-loading': loading
 		})
@@ -105,13 +104,12 @@ const Button: FC<IProps> = props => {
 			return null;
 		}
 
-		return (
-			<span className="ant-btn-icon">
-				{
-					loading ? <AiOutlineLoading className="ant-btn-icon-loading" /> : icon
-				}
-			</span>
-		);
+		const iconElement = loading ? <AiOutlineLoading /> : icon;
+		const iconClasses = classNames('ant-btn-icon', (iconElement as JSX.Element).props.className, {
+			'ant-btn-icon-loading': loading
+		});
+
+		return cloneElement(iconElement, { className: iconClasses });
 	}, [icon, loading]);
 
 	const handleClick = useCallback(

@@ -23,13 +23,13 @@ describe('Button', () => {
         expect(wrapper).toContainMatchingElement('a');
     });
 
-    it('Should render a correct component with different classnames when Button received different props', () => {
+    it('Should render a correct component with different classnames when button received different props', () => {
         const wrapper = shallow(<Button type={Types.PRIMARY} danger size={Sizes.LARGE} />);
 
         expect(wrapper).toHaveClassName('ant-btn ant-btn-primary ant-btn-danger ant-btn-large');
     });
 
-    it('The onclick function should be called after the Button is clicked', () => {
+    it('The onclick function should be called after the button is clicked', () => {
         const wrapper = shallow(<Button onClick={mockFn} />);
 
         wrapper.simulate('click');
@@ -43,5 +43,11 @@ describe('Button', () => {
         wrapper.simulate('click', { preventDefault: () => {} });
 
         expect(mockFn.mock.calls.length).toBe(0);
+    });
+
+    it('Should render a corrent button when loading is provided', () => {
+        const wrapper = shallow(<Button loading />);
+
+        expect(wrapper.find('button')).toHaveClassName('ant-btn-only-icon ant-btn-loading');
     });
 });
