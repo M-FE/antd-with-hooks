@@ -39,8 +39,13 @@ const App: FC = () => {
 			<hr />
 			<div>
 				<Menu>
-					<Menu.Item key="FE">Front-End</Menu.Item>
-					<Menu.Item key="BE">Back-End</Menu.Item>
+					<Menu.Item key="FE" disabled>Front-End</Menu.Item>
+					<Menu.Item key="BE">
+						<AiOutlineGithub className="mr-1" />Back-End
+					</Menu.Item>
+					<Menu.SubMenu key="Others-submenu" title="Other SubMenu">
+						<Menu.Item key="Others">Others</Menu.Item>
+					</Menu.SubMenu>
 				</Menu>
 			</div>
 		</div>

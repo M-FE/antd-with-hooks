@@ -1,11 +1,20 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
+import classnames from 'classnames';
 
-export interface IMenuItemProps {}
+export interface IMenuItemProps {
+    disabled?: boolean;
+    key?: string;
+    title?: string;
+}
 
 const MenuItem: FC<IMenuItemProps> = (props) => {
-    const { children } = props;
+    const { disabled, key, title, children } = props;
 
-    return <li>{children}</li>;
+    const classes = useMemo(() => classnames('ant-menu-item', {
+        [`is-disabled`]: disabled
+    }), [disabled]);
+
+    return <li className={classes}>{children}</li>;
 };
 
 MenuItem.displayName = 'MenuItem';

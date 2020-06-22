@@ -219,3 +219,23 @@ $btn-lg-padding-h: 1rem !default;
 $btn-sm-font-size: $font-size-sm !default;
 $btn-sm-height: 1.5rem !default;
 $btn-sm-padding-h: .5rem !default;
+
+/*
+ * Menu组件
+ */
+$menu-height: 46px !default;
+$menu-border-color: $border-color !default;
+$menu-bg: $white !default;
+$menu-color: $dark !default;
+$menu-font-size: $font-size-base !default;
+
+$menu-disabled-color: $disabled-color !default;
+
+$menu-active-color: $primary !default;
+$menu-active-bg: lighten($primary, 50%) !default;
+$menu-active-border-color: $primary !default;
+
+$menu-ver-height: 40px !default;
+
+$menu-item-padding: 0 20px !default;
+$menu-transition: all $transition-delay !default;

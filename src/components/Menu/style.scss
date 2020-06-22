@@ -1,0 +1,50 @@
+.ant-menu {
+    display: flex;
+
+    &,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &.ant-menu-horizontal {
+        border-bottom: 1px solid $menu-border-color;
+        height: $menu-height;
+        line-height: $menu-height;
+
+        .ant-menu-item {
+            margin-bottom: -1px;
+            border-bottom: 2px solid transparent;
+            padding: $menu-item-padding;
+
+            &.is-active,
+            &:hover {
+                color: $menu-active-color;
+                border-color: $menu-active-border-color;
+            }
+        }
+    }
+
+    &.ant-menu-vertical {
+        flex-direction: column;
+    }
+
+    .ant-menu-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: $menu-transition;
+    
+        &.is-disabled {
+            &,
+            &:hover,
+            &:focus {
+                border-color: transparent;
+                color: $menu-disabled-color;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
